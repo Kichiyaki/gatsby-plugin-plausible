@@ -2,14 +2,14 @@ import React from 'react';
 
 const getOptions = (pluginOptions) => {
   const plausibleDomain = pluginOptions.customDomain || 'plausible.io';
-  const scriptURI = '/js/plausible.js';
+  const scriptUri = pluginOptions.scriptUri || '/js/plausible.js';
   const domain = pluginOptions.domain;
   const excludePaths = pluginOptions.excludePaths || [];
   const trackAcquisition = pluginOptions.trackAcquisition || false;
 
   return {
     plausibleDomain,
-    scriptURI,
+    scriptUri,
     domain,
     excludePaths,
     trackAcquisition,
@@ -21,7 +21,7 @@ exports.onRenderBody = ({ setHeadComponents }, pluginOptions) => {
     return null;
   }
 
-  const { plausibleDomain, scriptURI, domain, excludePaths, trackAcquisition } =
+  const { plausibleDomain, scriptUri, domain, excludePaths, trackAcquisition } =
     getOptions(pluginOptions);
 
   const plausibleExcludePaths = [];
@@ -31,10 +31,9 @@ exports.onRenderBody = ({ setHeadComponents }, pluginOptions) => {
     plausibleExcludePaths.push(mm.makeRe());
   });
   const scriptProps = {
-    async: true,
     defer: true,
     'data-domain': domain,
-    src: `https://${plausibleDomain}${scriptURI}`,
+    src: `https://${plausibleDomain}${scriptUri}`,
   };
   if (trackAcquisition) {
     scriptProps['data-track-acquisition'] = true;
@@ -47,7 +46,6 @@ exports.onRenderBody = ({ setHeadComponents }, pluginOptions) => {
       href={`https://${plausibleDomain}`}
     />,
     <script key="gatsby-plugin-plausible-script" {...scriptProps} />,
-    //See: https://docs.plausible.io/goals-and-conversions#trigger-custom-events-with-javascript
     <script
       key="gatsby-plugin-plausible-custom-events"
       dangerouslySetInnerHTML={{

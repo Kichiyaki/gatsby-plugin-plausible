@@ -66,8 +66,9 @@ _NOTE: By default, this plugin only generates output when run in production mode
 ### Options
 
 | Option         | Explanation                                            |
-| -------------- | ------------------------------------------------------ |
+|----------------|--------------------------------------------------------|
 | `domain`       | The domain configured in Plausible (required)          |
+| `scriptUri`    | Custom script uri (default: ``/js/plausible.js``)      |
 | `customDomain` | Custom domain (if configured in Plausible's dashboard) |
 | `excludePaths` | Array of pathnames where page views will not be sent   |
 
