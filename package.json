@@ -1,7 +1,7 @@
 {
   "name": "@kichiyaki/gatsby-plugin-plausible",
   "description": "A Gatsby plugin for adding Plausible analytics to your Gatsby site",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "author": "Curtis Cummings <curtis@pixelplicity.com>",
   "license": "MIT",
   "repository": "Kichiyaki/gatsby-plugin-plausible",
